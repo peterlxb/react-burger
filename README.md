@@ -1,2 +1,1 @@
-# react-burger
-React &amp; Redux application
+## This this udemy course of React v16
