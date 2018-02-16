@@ -1,5 +1,4 @@
 import React from 'react';
-
 import './BuildControl.css'
 
 const BuildControl = (props) => (
@@ -9,7 +8,5 @@ const BuildControl = (props) => (
     <button className="More" onClick={props.added}>More</button>
   </div>
 );
-
-
 
 export default BuildControl;

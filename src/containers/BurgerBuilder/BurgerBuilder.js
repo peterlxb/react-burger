@@ -12,15 +12,17 @@ const INGREDIENT_PRICES = {
 };
 
 class BurgerBuilder extends Component {
-
-  state = {
-    ingredients: {
-      salad:0,
-      bacon:2,
-      cheese: 0,
-      meat:0
-    },
-    totalPrice:4
+  constructor(props){
+    super(props);
+    this.state = {
+      ingredients: {
+        salad:0,
+        bacon:2,
+        cheese: 0,
+        meat:0
+      },
+      totalPrice:4
+    }
   }
 
   addIngredientHandler = (type) => {
@@ -54,9 +56,7 @@ class BurgerBuilder extends Component {
 
   render () {
 
-    const disabledInfo = {
-      ...this.state.ingredients
-    };
+    const disabledInfo = { ...this.state.ingredients };
     for (let key in disabledInfo) {
       disabledInfo[key] = disabledInfo[key] <= 0;
     }

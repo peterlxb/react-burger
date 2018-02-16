@@ -1,5 +1,4 @@
 import React from 'react';
-
 import './Burger.css'
 import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
 
@@ -20,13 +19,8 @@ const burger = (props) => {
       transformedIngredients = <p>Please start adding ingredients</p>
     };
 
-  // const transformedIngredients = Object.keys(props.ingredients) //return arrays ['salad','cheese',...]
-  //   .map((igKey, i)=> { //igKey => salad ,cheese ....
-  //     return <BurgerIngredient key={igKey + i} type={igKey}/>;
-  //   });
-
   console.log(transformedIngredients);
-
+  // do noe use {} here.
   return (
     <div className="Burger">
       <BurgerIngredient type="bread-top" />
