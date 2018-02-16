@@ -1,5 +1,6 @@
 import React from 'react';
 import './BuildControls.css';
+import './Button.css';
 import BuildControl from './BuildControl/BuildControl';
 
 //add some fake values
@@ -22,6 +23,7 @@ const BuildControls = (props) => (
           disabled={props.disabled[ctrl.type]}
        />
     ))}
+    <button className="OrderButton" disabled={!props.purchasable}>ORDER NOW</button>
   </div>
 );
 
