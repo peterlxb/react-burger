@@ -1,6 +1,5 @@
 import React from 'react';
 import './BuildControls.css';
-import './Button.css';
 import BuildControl from './BuildControl/BuildControl';
 
 //add some fake values
