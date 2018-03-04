@@ -31,6 +31,7 @@ class BurgerBuilder extends Component {
   }
 
   componentDidMount() {
+    console.log('[BurgerBuilder.js] componentDidMount()');
     axios.get('https://react-my-burger-eveyang.firebaseio.com/ingredients.json')
       .then(response => {
         this.setState({ingredients:response.data});
