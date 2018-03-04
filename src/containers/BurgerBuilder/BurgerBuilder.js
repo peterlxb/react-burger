@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Aux from '../../hoc/Aux/Aux';
+import WithErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal';
@@ -102,7 +103,7 @@ class BurgerBuilder extends Component {
       deliveryMethod:"fastest",
       ordertime:new Date(),
     }
-    
+
     axios.post('/orders.json',order)
       .then(response => {
         this.setState({loading:false,purchasing:false})
@@ -151,4 +152,4 @@ class BurgerBuilder extends Component {
   }
 };
 
-export default BurgerBuilder;
+export default WithErrorHandler(BurgerBuilder,axios);
