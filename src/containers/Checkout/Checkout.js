@@ -7,7 +7,7 @@ class Checkout extends Component {
 
   state = {
     ingredients:{},
-    price:0
+    totalPrice:0
   }
 
   componentWillMount() {
