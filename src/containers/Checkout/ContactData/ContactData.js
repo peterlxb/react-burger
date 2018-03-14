@@ -6,8 +6,8 @@ import Spinner from '../../../components/UI/Spinner/Spinner';
 import Input from '../../../components/UI/Input/Input';
 import './ContactData.css';
 import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler';
-import purchaseBurgerStart from '../../../store/actions/index';
-import axios from '../../../axios-orders';
+import {purchaseBurger} from '../../../store/actions/index';
+
 
 class ContactData extends Component {
 
@@ -211,14 +211,15 @@ class ContactData extends Component {
 const mapStateToProps = state => {
   return {
     ings: state.ingredients,
-    price:state.totalPrice
+    price:state.totalPrice,
+    loading:state.order.loading
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    onOrderBurger: (orderData) => dispatch(purchaseBurgerStart(orderData))
+    onOrderBurger: (orderData) => dispatch(purchaseBurger(orderData))
   }
 }
 
-export default connect(mapStateToProps)(withErrorHandler(ContactData,axios));
+export default connect(mapStateToProps,mapDispatchToProps)(withErrorHandler(ContactData,axios));

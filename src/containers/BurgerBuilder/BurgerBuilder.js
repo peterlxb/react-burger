@@ -56,7 +56,7 @@ class BurgerBuilder extends Component {
   }
 
   render () {
-
+    console.log(this.props.ings);
     const disabledInfo = { ...this.props.ings };
     for (let key in disabledInfo) {
       disabledInfo[key] = disabledInfo[key] <= 0;
@@ -70,7 +70,6 @@ class BurgerBuilder extends Component {
     // if(this.state.loading) {
     //   orderSummary = <Spinner />
     // }
-
     if(this.props.ings) {
       burger = (
         <Aux>
@@ -107,9 +106,9 @@ class BurgerBuilder extends Component {
 
 const mapStateToProps = state => {
   return {
-    ings: state.ingredients,
-    price:state.totalPrice,
-    error:state.error,
+    ings: state.burgerBuild.ingredients,
+    price:state.burgerBuild.totalPrice,
+    error:state.burgerBuild.error,
   };
 }
 

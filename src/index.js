@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import './index.css';
 import App from './App';
-import BurgerBuildReducer from './store/reducers/burgerBuild';
+import reducers from './store/reducers/index';
 import registerServiceWorker from './registerServiceWorker';
 
 const logger = store => next => action => {
@@ -19,7 +19,7 @@ const logger = store => next => action => {
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 const store = createStore(
-  BurgerBuildReducer,
+  reducers,
   composeEnhancers(applyMiddleware(logger,thunk))
 );
 
