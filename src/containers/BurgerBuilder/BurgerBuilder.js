@@ -10,7 +10,7 @@ import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import axios from '../../axios-orders';
 
 import {
-  addIngredient,removeIngredient,initIngredients
+  addIngredient,removeIngredient,initIngredients,purchaseInit
 } from '../../store/actions/index';
 
 
@@ -52,6 +52,7 @@ class BurgerBuilder extends Component {
   }
 
   purchaseContinueHandler = () => {
+    this.props.onInitPurchase();
     this.props.history.push('/checkout');
   }
 
@@ -116,7 +117,8 @@ const mapDispatchToProps = dispatch => {
   return {
     onIngredientAdded: (ingName) => dispatch(addIngredient(ingName)),
     onIngredientRemoved: (ingName) => dispatch(removeIngredient(ingName)),
-    onInitIngredients: () => dispatch(initIngredients())
+    onInitIngredients: () => dispatch(initIngredients()),
+    onInitPurchase:() => dispatch(purchaseInit())
   }
 }
 
