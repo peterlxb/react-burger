@@ -3,9 +3,10 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { createStore,applyMiddleware,combineReducers ,compose} from 'redux';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
 import './index.css';
 import App from './App';
-import reducer from './store/reducers';
+import BurgerBuildReducer from './store/reducers/burgerBuild';
 import registerServiceWorker from './registerServiceWorker';
 
 const logger = store => next => action => {
@@ -18,9 +19,9 @@ const logger = store => next => action => {
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 const store = createStore(
-  reducer,
-  composeEnhancers(applyMiddleware(logger))
-)
+  BurgerBuildReducer,
+  composeEnhancers(applyMiddleware(logger,thunk))
+);
 
 
 const app = (
