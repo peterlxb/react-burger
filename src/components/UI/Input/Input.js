@@ -1,13 +1,13 @@
 import React from 'react';
 
-import classes from './Input.css';
+import './Input.css';
 
 const input = ( props ) => {
     let inputElement = null;
-    const inputClasses = [classes.InputElement];
+    const inputClasses = ["InputElement"];
 
     if (props.invalid && props.shouldValidate && props.touched) {
-        inputClasses.push(classes.Invalid);
+        inputClasses.push("Invalid");
     }
 
     switch ( props.elementType ) {
@@ -48,8 +48,8 @@ const input = ( props ) => {
     }
 
     return (
-        <div className={classes.Input}>
-            <label className={classes.Label}>{props.label}</label>
+        <div className="Input">
+            <label className="Label">{props.label}</label>
             {inputElement}
         </div>
     );
