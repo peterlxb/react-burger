@@ -3,11 +3,12 @@ import { Route, Switch ,withRouter,Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import Layout from './hoc/Layout/Layout';
 import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';
+import Logout from './containers/Auth/Logout/Logout';
 import Checkout from './containers/Checkout/Checkout';
+import * as actions from './store/actions/index';
 import Orders from './containers/Orders/Orders';
 import Auth from './containers/Auth/Auth';
-import Logout from './containers/Auth/Logout/Logout';
-import * as actions from './store/actions/index';
+import asyncComponent from './hoc/asyncComponent/asyncComponent';
 
 class App extends Component {
 
