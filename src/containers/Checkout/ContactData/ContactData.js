@@ -8,6 +8,7 @@ import axios from '../../../axios-orders';
 import Input from '../../../components/UI/Input/Input';
 import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler'
 import * as actions from '../../../store/actions/index';
+import { updateObject } from '../.././../utils/utility';
 
 class ContactData extends Component {
     state = {
@@ -146,17 +147,19 @@ class ContactData extends Component {
         return isValid;
     }
 
+    //use updateObject method;
     inputChangedHandler = (event, inputIdentifier) => {
-        const updatedOrderForm = {
-            ...this.state.orderForm
-        };
-        const updatedFormElement = {
-            ...updatedOrderForm[inputIdentifier]
-        };
-        updatedFormElement.value = event.target.value;
-        updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
-        updatedFormElement.touched = true;
-        updatedOrderForm[inputIdentifier] = updatedFormElement;
+
+        //更新订单元素name street zipcode等条目 第一个参数的值是name,street,zipcode....
+        const updatedFormElement = updateObject(this.state.orderForm[inputIdentifier],{
+            value:event.target.value,
+            valid: this.checkValidity(event.target.value, this.state.orderForm[inputIdentifier].validation),
+            touched: true
+        });
+        //根据条目更新整个订单，参数inputIdentifier的值是name,street,zipcode......
+        const updatedOrderForm = updateObject(this.state.orderForm,{
+          [inputIdentifier] : updatedFormElement
+        });
 
         let formIsValid = true;
         for (let inputIdentifier in updatedOrderForm) {
@@ -164,7 +167,7 @@ class ContactData extends Component {
         }
         this.setState({orderForm: updatedOrderForm, formIsValid: formIsValid});
     }
-
+    
     render () {
         const formElementsArray = [];
         for (let key in this.state.orderForm) {
